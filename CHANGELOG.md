@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2, 20 Nov 2026
+
+- Open tenders from ΚΗΜΔΗΣ and TED in the README, the skill and every description: the `find_tenders` tool, what it filters by, and example questions.
+
 ## 1.0.1, 20 Nov 2026
 
 - Plugins for Claude Code and Cursor, an extension for Gemini CLI, and an agent-plugins manifest, all pointing at `https://opendiavgeia.com/mcp`.

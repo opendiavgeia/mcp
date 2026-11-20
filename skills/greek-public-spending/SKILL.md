@@ -1,16 +1,16 @@
 ---
 name: greek-public-spending
-description: Answer questions about Greek public money from Diavgeia through opendiavgeia.com, such as what a ministry, municipality, region or hospital paid, to whom and for what, what a company (by name or ΑΦΜ) was paid by the state, contract and direct awards, or what a decision (ΑΔΑ) says. Use it for questions about Διαύγεια, δημόσιες δαπάνες, πληρωμές, αναθέσεις and ΑΦΜ.
+description: Answer questions about Greek public money and public tenders through opendiavgeia.com, such as what a ministry, municipality, region or hospital paid, to whom and for what, what a company (by name or ΑΦΜ) was paid by the state, contract and direct awards, what a decision (ΑΔΑ) says, or which tenders from ΚΗΜΔΗΣ and TED are open by sector, region, budget and deadline. Use it for questions about Διαύγεια, δημόσιες δαπάνες, πληρωμές, αναθέσεις, διαγωνισμοί, ΚΗΜΔΗΣ and ΑΦΜ.
 ---
 
 # Greek public spending (opendiavgeia)
 
-opendiavgeia.com reads the decisions Greek public bodies post on Diavgeia (diavgeia.gov.gr) since 2010 and totals them per body, per place and per payee by ΑΦΜ (tax number). Every record has a page on opendiavgeia.com that links to the original decision.
+opendiavgeia.com reads the decisions Greek public bodies post on Diavgeia (diavgeia.gov.gr) since 2010 and totals them per body, per place and per payee by ΑΦΜ (tax number). It also lists the open public tenders from ΚΗΜΔΗΣ (the Greek procurement register) and TED (the EU's tenders journal). Every record has a page on opendiavgeia.com that links to the original decision or notice.
 
 ## Where the answers come from
 
 - **With the opendiavgeia MCP tools** (`find_body_or_place`, `find_payee`, `body_spending` and the rest): use them. Setup: https://github.com/opendiavgeia/mcp
-- **Without them:** read the site's pages. https://opendiavgeia.com/llms.txt lists every page and address pattern, such as `/places/{uid}`, `/bodies/{uid}`, `/payees/{afm}` and `/decisions/{ada}`.
+- **Without them:** read the site's pages. https://opendiavgeia.com/llms.txt lists every page and address pattern, such as `/places/{uid}`, `/bodies/{uid}`, `/payees/{afm}`, `/decisions/{ada}` and `/tenders`.
 
 ## How to look things up
 
@@ -18,6 +18,12 @@ opendiavgeia.com reads the decisions Greek public bodies post on Diavgeia (diavg
 2. To search one body's decisions, pass its uid and keep its name out of the search words.
 3. When a name finds nothing, try the nearest spelling: one letter changed or dropped, accents, ντ for τ and μπ for π, Latin letters for Greek (Greeklish).
 4. A municipality's own body is not the whole town. A place's figures include its other bodies, such as its water company, so say which one you are quoting.
+
+## Open tenders
+
+- `find_tenders` lists what is open, closing first. Narrow it by words in the title or the buyer's name (in Greek), the kind of work (a CPV division), the region (NUTS 2, such as EL43 for Crete), the budget without VAT, the procedure (open, or an invitation to a direct award) and the deadline (a day, or within 24 hours, 7 days or 30 days).
+- Without the tools: `/tenders?sector={two-digit CPV division}` or `?nuts={NUTS 2 region}`, and one page per tender at `/tenders/{id}`.
+- A tender's page shows what its buyer paid for similar work since 2010, which helps judge its budget.
 
 ## Reading the figures
 
@@ -44,3 +50,6 @@ opendiavgeia.com reads the decisions Greek public bodies post on Diavgeia (diavg
 | Ανάληψη υποχρέωσης | Spending commitment (Β.1.3) |
 | Απευθείας ανάθεση | Direct award without a tender (Δ.1) |
 | Κατακύρωση | Tender award (Δ.2.2) |
+| Διακήρυξη | Tender notice (Δ.2.1) |
+| ΚΗΜΔΗΣ | The Greek public procurement register, where tenders and contracts are posted |
+| CPV | The EU's codes for the kind of work bought; the first two digits are the division |

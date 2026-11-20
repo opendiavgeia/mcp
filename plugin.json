@@ -1,11 +1,11 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "opendiavgeia",
-  "version": "1.0.1",
-  "description": "Greek public spending from Diavgeia: what bodies paid and awarded, to whom, with a link to each source decision.",
+  "version": "1.0.2",
+  "description": "Greek public spending from Diavgeia, what bodies paid and awarded and to whom, and open tenders from ΚΗΜΔΗΣ and TED, each linked to its source.",
   "author": { "name": "opendiavgeia", "email": "contact@opendiavgeia.com", "url": "https://opendiavgeia.com" },
   "homepage": "https://opendiavgeia.com/connect",
   "repository": "https://github.com/opendiavgeia/mcp",
   "license": "MIT",
-  "keywords": ["mcp", "greece", "diavgeia", "public-spending", "open-data", "procurement", "government-transparency"]
+  "keywords": ["mcp", "greece", "diavgeia", "public-spending", "open-data", "procurement", "tenders", "government-transparency"]
 }

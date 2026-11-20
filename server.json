@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.opendiavgeia/diavgeia",
   "title": "opendiavgeia",
-  "description": "Greek public spending since 2010 from Diavgeia: payments, awards and decisions by body and payee.",
-  "version": "1.0.1",
+  "description": "Greek public payments, awards and decisions since 2010, and open tenders from ΚΗΜΔΗΣ and TED.",
+  "version": "1.0.2",
   "websiteUrl": "https://opendiavgeia.com/connect",
   "repository": { "url": "https://github.com/opendiavgeia/mcp", "source": "github" },
   "icons": [

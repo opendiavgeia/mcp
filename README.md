@@ -1,6 +1,6 @@
 # opendiavgeia MCP server
 
-Ask Claude, ChatGPT, Cursor or any MCP client what Greek public bodies paid and to whom. The server reads the decisions posted on [Diavgeia](https://diavgeia.gov.gr) since 2010, with totals per body, per place and per payee by tax number (ΑΦΜ). Every record it returns links to its page on [opendiavgeia.com](https://opendiavgeia.com), where you can check the figure against the original decision.
+Ask Claude, ChatGPT, Cursor or any MCP client what Greek public bodies paid and to whom, and which public tenders are open. The server reads the decisions posted on [Diavgeia](https://diavgeia.gov.gr) since 2010, with totals per body, per place and per payee by tax number (ΑΦΜ), and the open tenders from [ΚΗΜΔΗΣ](https://cerpp.eprocurement.gov.gr) and [TED](https://ted.europa.eu). Every record it returns links to its page on [opendiavgeia.com](https://opendiavgeia.com), where you can check it against the original decision or notice.
 
 ```
 https://opendiavgeia.com/mcp
@@ -53,12 +53,14 @@ VS Code's file uses `"servers"` in place of `"mcpServers"` and wants `"type": "h
 - Which bodies paid COSMOTE the most in 2024?
 - Which municipalities in Crete spent the most in 2024?
 - Which decisions of the Municipality of Patras are about street lighting?
+- Which IT tenders in Crete close this week?
+- Which open tenders for road works have a budget over €1 million?
 
 Questions work in Greek or English, and names in Greek or Latin letters.
 
 ## Tools
 
-All ten only read.
+All eleven only read.
 
 | Tool | What it returns |
 | --- | --- |
@@ -72,6 +74,7 @@ All ten only read.
 | `decisions_between` | The decisions one body issued that name one ΑΦΜ, newest first |
 | `get_decision` | One decision by its ΑΔΑ: subject, type, body, amount, parties and the decisions it follows from |
 | `direct_award_threshold` | Direct awards counted in €200 bands up to and past the €37,200 limit above which a tender is required |
+| `find_tenders` | Open tenders from ΚΗΜΔΗΣ and TED, closing first, by words, kind of work (CPV), region, budget, procedure and deadline, with buyer, budget and deadline |
 
 ## Skill
 
@@ -85,6 +88,7 @@ npx skills add opendiavgeia/mcp
 
 - Amounts are in euros. Payments (money paid out) and contract awards (money agreed) are kept apart and never added together.
 - Totals run to the end of the latest month held in full. A year still running is partial, and each result says what it covers.
+- Open tenders come from ΚΗΜΔΗΣ, the Greek public procurement register, and TED, the EU's tenders journal. Each tender's page on the site shows what its buyer paid for similar work since 2010.
 - Decisions come from Diavgeia's open API and, back to 2010, from the [glossAPI/diavgeia](https://huggingface.co/datasets/glossAPI/diavgeia) archive (CC BY 4.0). [How amounts are counted](https://opendiavgeia.com/about).
 - Patterns such as awards just under the tender limit are worth a look, not proof of wrongdoing.
 
@@ -95,6 +99,6 @@ npx skills add opendiavgeia/mcp
 
 ## Feedback
 
-Open an [issue](https://github.com/opendiavgeia/mcp/issues) for a wrong figure, a name the tools can't find or a client that won't connect, or write to contact@opendiavgeia.com.
+Open an [issue](https://github.com/opendiavgeia/mcp/issues) for a wrong figure, a missing tender, a name the tools can't find or a client that won't connect, or write to contact@opendiavgeia.com.
 
 This repository holds the server's documentation and its [MCP Registry](https://registry.modelcontextprotocol.io) entry, `server.json` (`com.opendiavgeia/diavgeia`). opendiavgeia is not affiliated with diavgeia.gov.gr or any public authority.
