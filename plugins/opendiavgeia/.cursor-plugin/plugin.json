@@ -1,0 +1,10 @@
+{
+  "name": "opendiavgeia",
+  "description": "Greek public spending from Diavgeia: what bodies paid and awarded, to whom, with a link to each source decision.",
+  "version": "1.0.1",
+  "author": { "name": "opendiavgeia", "email": "contact@opendiavgeia.com", "url": "https://opendiavgeia.com" },
+  "homepage": "https://opendiavgeia.com/connect",
+  "repository": "https://github.com/opendiavgeia/mcp",
+  "license": "MIT",
+  "keywords": ["mcp", "greece", "diavgeia", "public-spending", "open-data", "procurement", "government-transparency"]
+}

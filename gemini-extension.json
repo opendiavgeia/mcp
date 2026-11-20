@@ -1,0 +1,9 @@
+{
+  "name": "opendiavgeia",
+  "version": "1.0.1",
+  "description": "Greek public spending from Diavgeia: what bodies paid and awarded, to whom, with a link to each source decision.",
+  "contextFileName": "skills/greek-public-spending/SKILL.md",
+  "mcpServers": {
+    "opendiavgeia": { "httpUrl": "https://opendiavgeia.com/mcp" }
+  }
+}

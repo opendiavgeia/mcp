@@ -15,10 +15,22 @@ It needs a free opendiavgeia account. The first time you connect, you sign in wi
 
 **Claude** (web and desktop): open Customize → Connectors, press Add → Add custom connector, give it a name such as opendiavgeia, paste the address and press Add. Then press Connect and sign in.
 
-**Claude Code:**
+**Claude Code:** install the plugin, which adds the server and the [skill](#skill):
+
+```
+/plugin install opendiavgeia --marketplace opendiavgeia/mcp
+```
+
+or only the server:
 
 ```bash
 claude mcp add --transport http opendiavgeia https://opendiavgeia.com/mcp
+```
+
+**Gemini CLI:**
+
+```bash
+gemini extensions install https://github.com/opendiavgeia/mcp
 ```
 
 **Cursor and VS Code:** use the buttons above, or add it to `mcp.json`:
@@ -60,6 +72,14 @@ All ten only read.
 | `decisions_between` | The decisions one body issued that name one ΑΦΜ, newest first |
 | `get_decision` | One decision by its ΑΔΑ: subject, type, body, amount, parties and the decisions it follows from |
 | `direct_award_threshold` | Direct awards counted in €200 bands up to and past the €37,200 limit above which a tender is required |
+
+## Skill
+
+[`skills/greek-public-spending`](skills/greek-public-spending/SKILL.md) tells an agent how to answer from this data: names before figures, payments and awards kept apart, a link on every record, and care with private people. It works with the MCP tools or, without them, from the site's own pages. The Claude Code plugin and the Gemini extension include it; for other agents:
+
+```bash
+npx skills add opendiavgeia/mcp
+```
 
 ## About the data
 

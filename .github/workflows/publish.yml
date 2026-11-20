@@ -30,5 +30,9 @@ jobs:
         env:
           MCP_REGISTRY_KEY: ${{ secrets.MCP_REGISTRY_KEY }}
         run: |
+          if [ -z "$MCP_REGISTRY_KEY" ]; then
+            echo "::warning::MCP_REGISTRY_KEY is not set, so nothing was published. Add it, then run this workflow again."
+            exit 0
+          fi
           ./mcp-publisher login dns --domain opendiavgeia.com --private-key "$MCP_REGISTRY_KEY"
           ./mcp-publisher publish

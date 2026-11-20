@@ -1,0 +1,33 @@
+# Keeps the manifests valid and in step: one version everywhere, one copy of the skill.
+name: Check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Every JSON file parses
+        run: find . -name '*.json' -not -path './.git/*' -print0 | xargs -0 -n1 jq -e . > /dev/null
+
+      - name: One version everywhere
+        run: |
+          versions=$(for f in server.json plugin.json gemini-extension.json plugins/opendiavgeia/.claude-plugin/plugin.json plugins/opendiavgeia/.cursor-plugin/plugin.json; do jq -r .version "$f"; done
+            for f in .claude-plugin/marketplace.json .cursor-plugin/marketplace.json; do jq -r '.metadata.version, .plugins[0].version' "$f"; done)
+          echo "$versions" | sort -u
+          test "$(echo "$versions" | sort -u | wc -l)" -eq 1
+
+      - name: The plugin's skill is the same as the one at the root
+        run: diff -r skills plugins/opendiavgeia/skills
+
+      - name: server.json is valid for the MCP Registry
+        run: |
+          curl -fsSL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
+          ./mcp-publisher validate

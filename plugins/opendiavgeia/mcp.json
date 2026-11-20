@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "opendiavgeia": {
+      "type": "http",
+      "url": "https://opendiavgeia.com/mcp"
+    }
+  }
+}
