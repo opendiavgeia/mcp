@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.opendiavgeia/diavgeia",
+  "title": "opendiavgeia",
+  "description": "Greek public spending since 2010 from Diavgeia: payments, awards and decisions by body and payee.",
+  "version": "1.0.1",
+  "websiteUrl": "https://opendiavgeia.com/connect",
+  "repository": { "url": "https://github.com/opendiavgeia/mcp", "source": "github" },
+  "icons": [
+    { "src": "https://opendiavgeia.com/icon.svg", "mimeType": "image/svg+xml", "sizes": ["any"] },
+    { "src": "https://opendiavgeia.com/apple-icon", "mimeType": "image/png", "sizes": ["180x180"] }
+  ],
+  "remotes": [{ "type": "streamable-http", "url": "https://opendiavgeia.com/mcp" }]
+}
